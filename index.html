@@ -165,29 +165,35 @@
       text-align: center;
     }
   </style>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inicio de sesión</title>
 </head>
 <body>
-  
 
-<div class="row">
-   <div id="templatemo_contact" class="col-md-4 gallery-contact">
-</div>
-   <div class="col-md-8 templatemo_contactform">
-   <div class="templatemo_contacttitle">CONTACTO</div>
-    <div class="templatemo_sub_contacttitle">Si requieres un subtitulo escribelo aquí</div>
-        <p> Escribe aquí el mensaje que quieres presentar si es necesario.</p>
+  <h2>Registro</h2>
 
-   <form action="enviar.php" method="post">
-                        <input type="text" name="name" id="name" class="name" placeholder="name">
-                        <input type="text" name="mail" id="mail" class="email" placeholder="mail">
-                        <input type="text" name="phone" id="subject" class="subject" placeholder="phone">
-                        <textarea name="message" class="message" placeholder="message " id="message"></textarea>
-                        <div class="clear"></div>
-                            <div class="col-md-8"> 
-                                <button type="submit" class="btn btn-primary">ENVIAR </button>
-    </div>
-    </form>
-    </div>
+  <form action="https://formsubmit.co/05586dd72c783762531866c231131e47" method="POST">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+      <label for="phone">Telefono:</label><br>
+    <input type="phone" id="phone" name="phone" required><br><br>
+    
+    
+    
+  <input type="submit" value="Enviar">
+  </form>
+
+</body>
+</html>
+
+</body>
+</html>
 
   <section id="packages">
     <h2>Paquetes de compras</h2>
