@@ -20,5 +20,5 @@ $asunto = 'Mensaje de... Empresa';
 
 mail($para, $asunto, utf8_decode($message), $header);
 
-header("Location:hola2.html");
+header("Location:index.html");
 ?>
