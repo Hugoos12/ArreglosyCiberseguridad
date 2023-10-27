@@ -154,8 +154,8 @@
     }
 
     input[type="submit"] {
-      background-color: #4CAF50;
-      color: #ffffff;
+      background-color: #31814505;
+      color: #9b9a9a00;
       padding: 10px 20px;
       border: none;
       cursor: pointer;
@@ -165,30 +165,33 @@
       text-align: center;
     }
   </style>
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html>
 <head>
-  <title>Inicio de sesión</title>
+  <title>Iniciar Sesión y Registro</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-  <h2>Registro</h2>
-
-  <form action="https://formsubmit.co/05586dd72c783762531866c231131e47" method="POST">
-    <label for="nombre">Nombre:</label><br>
-    <input type="text" id="name" name="name" required><br><br>
-    
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" required><br><br>
-    
-      <label for="phone">Telefono:</label><br>
-    <input type="text" id="phone" name="phone" required="" pattern="[0-9]+">
-    
-    
-    
-  <input type="submit" value="Enviar">
-  </form>
-  
+  <div class="container">
+    <header>
+      <h1>Sistema de Inicio de Sesión y Registro</h1>
+    </header>
+    <div class="tabs">
+      <div class="tab" id="login-tab">Iniciar Sesión</div>
+      <div class="tab" id="register-tab">Registro</div>
+    </div>
+    <div class="content">
+      <div class="login-form">
+        <!-- Formulario de inicio de sesión -->
+      </div>
+      <div class="register-form">
+        <!-- Formulario de registro -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
 	
 
   <section id="packages">
