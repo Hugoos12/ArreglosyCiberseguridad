@@ -1,72 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pago con PayPal y Bizum</title>
+  <link rel="stylesheet" href="style4.css">
 </head>
 <body>
-  <h1>Pago con PayPal</h1>
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="TU_ID_DE_BOTON_PAYPAL">
-    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-  </form>
+  <div class="payment-container">
+    <div class="payment-method">
+      <h1>Pago con PayPal</h1>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="TU_ID_DE_BOTON_PAYPAL">
+        <button type="submit" class="paypal-button">
+          <img src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" alt="PayPal Logo">
+        </button>
+      </form>
+    </div>
 
-  <h1>Pago con Bizum</h1>
-  <form action="https://www.bizum.es/pay" method="post" target="_blank">
-    <input type="hidden" name="amount" value="CANTIDAD_A_PAGAR">
-    <input type="hidden" name="phone" value="TIPO_DE_TELÉFONO:MÓVIL">
-    <input type="submit" value="Pagar con Bizum">
-  </form>
-</body>
-</html>
-<h2>Correo para la entrega del paquete</h2>
-<p> OBLIGATORIO PARA LA COMPRA </p>
+    <div class="payment-method">
+      <h1>Pago con Bizum</h1>
+      <form action="https://www.bizum.es/pay" method="post" target="_blank">
+        <input type="hidden" name="amount" value="CANTIDAD_A_PAGAR">
+        <input type="hidden" name="phone" value="TIPO_DE_TELÉFONO:MÓVIL">
+        <button type="submit" class="bizum-button">Pagar con Bizum</button>
+      </form>
+    </div>
+  </div>
 
-  <form action="https://formsubmit.co/05586dd72c783762531866c231131e47" method="POST">
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" required><br><br>
- <input type="submit" value="Enviar">
-  </form>
-    
-
-</script>
-<script src="/bundles/jquery?v=unfc-u3TLGpORZGkmQkQ77TpgXxxHnNqIronCpWbbsU1"></script>
-<script src="/App/textoslegales.js"></script>
-<script src="/App/acceso.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    .boton-azul-claro {
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 18px;
-      font-weight: bold;
-      text-align: center;
-      text-decoration: none;
-      border: none;
-      border-radius: 5px;
-      color: #fff;
-      background-color: #66a3ff;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s ease;
-    }
-    .boton-azul-claro:hover {
-      background-color: #4d94ff;
-    }
-  </style>
-</head>
-<body>
-  <a class="boton-azul-claro" href="inicio.html">Inicio</a>
-</body>
-</html>
-
-</script>
-<script src="/bundles/jquery?v=unfc-u3TLGpORZGkmQkQ77TpgXxxHnNqIronCpWbbsU1"></script>
-<script src="/App/textoslegales.js"></script>
-<script src="/App/acceso.js"></script>
+  <div class="delivery-info">
+    <h2>Correo para la entrega del paquete</h2>
+    <p>OBLIGATORIO PARA LA COMPRA</p>
+    <form action="https://formsubmit.co/05586dd72c783762531866c231131e47" method="POST">
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+      <input type="submit" value="Enviar" class="delivery-button">
+    </form>
+  </div>
 </body>
 </html>
