@@ -1,90 +1,245 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arreglos y Ciberseguridad</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header #logo {
+      width: 100px;
+      height: auto;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #66a3ff;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+
+    .package {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .package:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .package h3 {
+      color: #333;
+    }
+
+    .package p {
+      color: #666;
+    }
+
+    .package a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #66a3ff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .package a:hover {
+      background-color: #4d94ff;
+    }
+
+    .image-section {
+      text-align: center;
+    }
+
+    .product {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .product img {
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .product-title {
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .product:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+    }
+
+    .garantia {
+      margin-top: 10px;
+      color: #66a3ff;
+      font-weight: bold;
+    }
+  </style>
 </head>
+
 <body>
   <header>
+    <div class="logo-container">
+      <img src="logo2.png" alt="Logo" id="logo">
+    </div>
+
     <div class="header-container">
       <h1>Arreglos y Ciberseguridad</h1>
       <nav>
         <ul>
-          <li><a href="Acerca De.html">Acerca de</a></li>
+          <li><a href="Acerca%20De.html">Acerca de</a></li>
           <li><a href="Contacto.html">Atención al Cliente</a></li>
           <li><a href="consejos.html">Consejos Sobre Ciberseguridad</a></li>
-          <li><a href="Pagina de pago.html">Página de Pago</a></li>
+          <li><a href="Pagina%20de%20pago.html">Página de Pago</a></li>
+          <li><a href="Chatbot.html">Chat bot</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
-
   <div class="container">
     <h2>Paquetes de Compras</h2>
-
     <div class="package">
-        <h3>1 Virus</h3>
-        <p>El contenido de este artículo es un virus destinado a uso personal.Para android Solo funcionará si lo abres. Además, el paquete incluye un servicio técnico y el producto te llegará al correo electrónico con el que te hayas registrado.
-        </p>
-        <p>Precio: 30,47$/29€</p>
-        <a href="Pagina de pago.html">Comprar</a>
-      </div>
-      <div class="package">
-        <h3>2 Virus</h3>
-        <p>El contenido de este artículo son 2 virus destinado a uso personal.Para android o windows. Solo funcionará si lo abres. Además, el paquete incluye un servicio técnico 24/7 y el producto te llegará al correo electrónico con el que te hayas registrado.Envia un correo a la direccion que se le facilita con las especificaciones del producto.</p>
-        <p>Precio: 52,54$/50€</p>
-         <a href="Pagina de pago.html">Comprar</a>
-      </div>
-      <div class="package">
-        <h3>3 Virus</h3>
-        <p>El contenido de este artículo son 3 virus destinado a uso personal.Para android, windows o linux. Solo funcionará si lo abres. Además, el paquete incluye un servicio técnico 24/7 y el producto te llegará al correo electrónico con el que te hayas registrado.Envia un correo a la direccion que se le facilita con las especificaciones del producto.</p>
-        <p>Precio: 104,03$/99€</p>
-        <a href="Pagina de pago.html">Comprar</a>
-      </div>
-      <div class="package">
-        <h3>1 Pagina web Personalizada</h3>
-        <p>El contenido de este paquete es una página web personalizada al detalle, que cumple con todas las especificaciones del cliente. La página web que se entrega al cliente está clasificada en la categoría de gama media, y además garantizamos seguridad en la página web del cliente.Tienes un servicio tecnico 24/7.</p>
-        </p>
-        <p>Precio: 47,43$/45€</p>
-        <a href="Pagina de pago.html">Comprar</a>
-        <div class="package">
-          <h3>2 Paginas webs Personalizadas</h3>
-          <p>El contenido de este paquete son 2 páginas webs personalizadas al detalle, que cumple con todas las especificaciones del cliente. La página web que se entrega al cliente está clasificada en la categoría de gama media, y además garantizamos seguridad en la página web del cliente.Tienes un servicio tecnico 24/7.</p>
-          </p>
-          <p>Precio: 79,05$/75€</p>
-          <a href="Pagina de pago.html">Comprar</a>
-          <div class="package">
-            <h3>3 Paginas webs Personalizadas</h3>
-            <p>El contenido de este paquete son 3 páginas webs personalizadas al detalle, que cumple con todas las especificaciones del cliente. La página web que se entrega al cliente está clasificada en la categoría de gama media, y además garantizamos seguridad en la página web del cliente.Tienes un servicio tecnico 24/7.</p>
-            </p>
-            <p>Precio: 105,41$/100€</p>
-            <a href="Pagina de pago.html">Comprar</a>
-            <div class="package">
-              <h3>Prueba de seguridad a X pagina web</h3>
-              <p>El contenido de este paquete pone a prueba la seguridad de cierta página web utilizando herramientas legales y sin hacer ningún tipo de ataque a la página tienes un servicio tecnico 24/7</p>
-              </p>
-              <p>Precio: 21,08$/20€</p>
-              <a href="Pagina de pago.html">Comprar</a>
-            <div class="package">
-              <h3>Antivirus</h3>
-              <p>El contenido de este paquete incluye 1 antivirus con antitráfico de red, brindando seguridad en el dispositivo al bloquear amenazas y sitios web sospechosos. Además, proporciona mayor seguridad al navegar por internet y un servicio técnico disponible 24/7.</p>
-              </p>
-              <p>Precio: 36,88$/35€</p>
-              <a href="Pagina de pago.html">Comprar</a>
-      </div>
-    </section>
-
+      <h3>1 Virus</h3>
+      <p>El contenido de este artículo es un virus destinado a uso personal. Para android. Solo funcionará si lo abres. Además, el paquete incluye un servicio técnico y el producto te llegará al correo electrónico con el que te hayas registrado.</p>
+      <p>Precio: 30,47$/29€</p><a href="Pagina%20de%20pago.html">Comprar</a>
+    </div>
+    <div class="package">
+      <h3>2 Virus</h3>
+      <p>El contenido de este artículo son 2 virus destinados a uso personal. Para android o windows. Solo funcionará si lo abres. Además, el paquete incluye un servicio técnico 24/7 y el producto te llegará al correo electrónico con el que te hayas registrado. Envía un correo a la dirección que se le facilita con las especificaciones del producto.</p>
+      <p>Precio: 52,54$/50€</p><a href="Pagina%20de%20pago.html">Comprar</a>
+    </div>
+    <div class="package">
+      <h3>3 Virus</h3>
+      <p>El contenido de este artículo son 3 virus destinados a uso personal. Para android, windows o linux. Solo funcionará si lo abres. Además, el paquete incluye un servicio técnico 24/7 y el producto te llegará al correo electrónico con el que te hayas registrado. Envía un correo a la dirección que se le facilita con las especificaciones del producto.</p>
+      <p>Precio: 104,03$/99€</p><a href="Pagina%20de%20pago.html">Comprar</a>
+    </div>
+    <div class="package">
+      <h3>1 Página web Personalizada</h3>
+      <p>El contenido de este paquete es una página web personalizada al detalle, que cumple con todas las especificaciones del cliente. La página web que se entrega al cliente está clasificada en la categoría de gama media, y además garantizamos seguridad en la página web del cliente. Tienes un servicio técnico 24/7.</p>
+      <p>Precio: 47,43$/45€</p><a href="Pagina%20de%20pago.html">Comprar</a>
+    </div>
+    <div class="package">
+      <h3>2 Páginas webs Personalizadas</h3>
+      <p>El contenido de este paquete son 2 páginas webs personalizadas al detalle, que cumple con todas las especificaciones del cliente. La página web que se entrega al cliente está clasificada en la categoría de gama media, y además garantizamos seguridad en la página web del cliente. Tienes un servicio técnico 24/7.</p>
+      <p>Precio: 79,05$/75€</p><a href="Pagina%20de%20pago.html">Comprar</a>
+    </div>
+    <div class="package">
+      <h3>3 Páginas webs Personalizadas</h3>
+      <p>El contenido de este paquete son 3 páginas webs personalizadas al detalle, que cumple con todas las especificaciones del cliente. La página web que se entrega al cliente está clasificada en la categoría de gama media, y además garantizamos seguridad en la página web del cliente. Tienes un servicio técnico 24/7.</p>
+      <p>Precio: 105,41$/100€</p><a href="Pagina%20de%20pago.html">Comprar</a>
+    </div>
+    <div class="package">
+      <h3>Prueba de seguridad a X página web</h3>
+      <p>El contenido de este paquete pone a prueba la seguridad de cierta página web utilizando herramientas legales y sin hacer ningún tipo de ataque a la página. Tienes un servicio técnico 24/7.</p>
+      <p>Precio: 21,08$/20€</p><a href="Pagina%20de%20pago.html">Comprar</a>
+    </div>
+    <div class="package">
+      <h3>Antivirus</h3>
+      <p>El contenido de este paquete incluye 1 antivirus con antitráfico de red, brindando seguridad en el dispositivo al bloquear amenazas y sitios web sospechosos. Además, proporciona mayor seguridad al navegar por internet y un servicio técnico disponible 24/7.</p>
+      <p>Precio: 36,88$/35€</p><a href="Pagina%20de%20pago.html">Comprar</a>
+    </div>
   </div>
 
+  <div class="image-section">
+    <h2>Productos Destacados</h2>
+    <div class="product" onclick="redirectToPago('Pagina%20de%20pago.html')">
+      <img src="virus.jpg" alt="Virus">
+      <h3 class="product-title">Virus</h3>
+    </div>
+
+    <div class="product" onclick="redirectToPago('Pagina%20de%20pago.html')">
+      <img src="web.jpg" alt="Página web">
+      <h3 class="product-title">Webs personalizadas</h3>
+    </div>
+
+    <!-- Agrega más productos -->
+  </div>
+
+  <script>
+    function redirectToPago(pagina) {
+      window.location.href = pagina;
+    }
+  </script>
 
   <footer>
-    <p>Derechos de autor Hugo Sánchez &copy; 2022 Arreglos y Ciberseguridad. Todos los derechos reservados.</p>
+    <p>Derechos de autor Hugo Sánchez © 2022 Arreglos y Ciberseguridad. Todos los derechos reservados.</p>
     <div class="garantia">
       <marquee>Garantía del producto: Envío en 1 día - 1 semana</marquee>
+    </div>
   </footer>
 </body>
+
 </html>
+
