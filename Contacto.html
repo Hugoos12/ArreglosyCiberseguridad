@@ -1,82 +1,123 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto y Productos</title>
-  <link rel="stylesheet" href="style5.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto y Productos</title>
+    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 </head>
+
 <body>
-  <div class="container">
-    <div class="contact-section">
-      <h2>Contacto</h2>
-      <form action="https://formsubmit.co/05586dd72c783762531866c231131e47" method="POST">
-        <label for="fullname">Nombre</label>
-        <input type="text" id="fullname" name="fullname" required>
-        
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="phone">Número de Teléfono</label>
-        <input type="tel" id="phone" name="phone" required>
-        
-        <label for="message">Mensaje</label>
-        <textarea id="message" name="message" rows="3" required></textarea>
-        
-        <button type="submit">Enviar</button>
-      </form>
+    <div class="container">
+        <div class="contact-section">
+            <h2>Contacto</h2>
+            <form id="form">
+                <div class="field">
+                    <label for="name">Nombre</label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="field">
+                    <label for="message">Mensaje</label>
+                    <textarea name="message" id="message" rows="4" required></textarea>
+                </div>
+                <input type="submit" id="button" value="Enviar">
+            </form>
+
+            <div id="timerContainer" style="display: none;">
+                <p id="timerText"></p>
+            </div>
+        </div>
+
+        <h1>Productos</h1>
+
+        <div class="package" onclick="redirectToPago('Pagina de pago.html')">
+            <h2>1 Virus - Ciberseguridad</h2>
+            <p>Precio: 30,47$/29€</p>
+        </div>
+
+        <div class="package" onclick="redirectToPago('Pagina de pago.html')">
+            <h2>2 Virus - Ciberseguridad</h2>
+            <p>Precio: 52,54$/50€</p>
+        </div>
+
+        <div class="package" onclick="redirectToPago('Pagina de pago.html')">
+            <h2>3 Virus - Ciberseguridad</h2>
+            <p>Precio: 104,03$/99€</p>
+        </div>
+  
+        <div class="package" onclick="redirectToPago('Pagina de pago.html')">
+            <h2>1 Pagina Web - Ciberseguridad</h2>
+            <p>Precio: 47,43$/45€</p>
+        </div>
+  
+        <div class="package" onclick="redirectToPago('Pagina de pago.html')">
+            <h2>2 Paginas webs - Ciberseguridad</h2>
+            <p>Precio: 79,05$/75€</p>
+        </div>
+  
+        <div class="package" onclick="redirectToPago('Pagina de pago.html')">
+            <h2>3 Paginas Webs - Ciberseguridad</h2>
+            <p>Precio: 105,41$/100€</p>
+        </div>
+  
+        <div class="package" onclick="redirectToPago('Pagina de pago.html')">
+            <h2>1 Prueba de seguridad - Ciberseguridad</h2>
+            <p>Precio: 21,08$/20€</p>
+        </div>
+  
+        <div class="package" onclick="redirectToPago('Pagina de pago.html')">
+            <h2>1 Antivirus - Ciberseguridad</h2>
+            <p>Precio: 36,88$/35€</p>
+        </div>
+
+        <div class="support">
+            <p>¿Necesitas ayuda? Llámanos al <strong>123-456-7890</strong></p>
+        </div>
     </div>
-    
-    <h1>Productos</h1>
-    
-    <div class="package">
-      <h2>1 Virus - Ciberseguridad</h2>
-      <p>Precio: 30,47$/29€</p>
-    </div>
-    
-    <div class="package">
-		<h2>2 Virus - Ciberseguridad</h2>
-		<p>Precio: 52,54$/50€</p>
-	  </div>
 
-	  <div class="package">
-		<h2>3 Virus - Ciberseguridad</h2>
-		<p>Precio: 104,03$/99€</p>
-	  </div>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="app5.js"></script>
+    <script>
+        const btn = document.getElementById('button');
 
-	  <div class="package">
-		<h2>1 Pagina Web - Ciberseguridad</h2>
-		<p>Precio: 47,43$/45€</p>
-	  </div>
+        emailjs.init('tBSJ_ZuJb5nw9wk6S');
 
-	  <div class="package">
-		<h2>2 Paginas webs - Ciberseguridad</h2>
-		<p>Precio: 79,05$/75€</p>
-	  </div>
+        document.getElementById('form').addEventListener('submit', function (event) {
+            event.preventDefault();
 
-	  <div class="package">
-		<h2>3 Paginas Webs - Ciberseguridad</h2>
-		<p>Precio: 105,41$/100€</p>
-	  </div>
+           
+            const lastSentTime = localStorage.getItem('lastSentTime');
 
-	  <div class="package">
-		<h2>1 Prueba de seguridad - Ciberseguridad</h2>
-		<p>Precio: 21,08$/20€</p>
-	  </div>
+            
+            if (lastSentTime && Date.now() - parseInt(lastSentTime, 10) < 12 * 60 * 60 * 1000) {
+                alert('Debes de esperar al menos 12 horas entre mensajes.');
+                return;
+            }
 
-	  <div class="package">
-		<h2>1 Antivirus - Ciberseguridad</h2>
-		<p>Precio: 36,88$/35€</p>
-	  </div>
-    
-    <div class="support">
-      <p>¿Necesitas ayuda? Llámanos al <strong>123-456-7890</strong></p>
-    </div>
-  </div>
+            btn.value = 'Enviando...';
+
+            const serviceID = 'service_zg2iwig';
+            const templateID = 'template_c7h1k58';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    btn.value = 'Enviar';
+                    alert('El mensaje enviado correctamente!');
+                    
+                    localStorage.setItem('lastSentTime', Date.now().toString());
+                }, (err) => {
+                    btn.value = 'Enviar';
+                    alert(JSON.stringify(err));
+                });
+        });
+    </script>
 </body>
+
 </html>
-											<script src="/bundles/jquery?v=unfc-u3TLGpORZGkmQkQ77TpgXxxHnNqIronCpWbbsU1"></script>
-																<script src="/App/textoslegales.js"></script>
-																<script src="/App/acceso.js"></script>
-																</body>
-																</html>
