@@ -3,12 +3,12 @@ function iniciarSesion($email, $password) {
     session_start();
 
     // Conexion a la base de datos (reemplaza los valores con los de tu configuración)
-    $servername = "tu_servidor";
-    $username = "tu_usuario";
-    $password = "tu_contrasena";
-    $dbname = "tu_base_de_datos";
+    SELECT * FROM `usuarios`
+    $servername = "http://localhost/phpmyadmin/";
+    $email = "tu_correo";
+    $dbname = "registro";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $email, $password, $dbname);
 
     // Verificar la conexión a la base de datos
     if ($conn->connect_error) {
