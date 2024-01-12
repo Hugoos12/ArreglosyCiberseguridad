@@ -41,7 +41,7 @@
 
                 <div class="_or">o</div>
 
-                <form action="inicio.html" method="post" class="the-form" onsubmit="redirectForm('inicio.html')">
+                <form action="inicio.html" method="post" class="the-form">
 
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" placeholder="Ingresa tu correo electrónico" required>
@@ -67,7 +67,7 @@
 
                 <div class="_or">o</div>
 
-                <form action="inicio.html" method="post" class="the-form" onsubmit="redirectForm('inicio.html')">
+                <form action="inicio.html" method="post" class="the-form">
 
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" placeholder="Ingresa tu correo electrónico" required>
@@ -98,8 +98,7 @@
         }
 
         function redirectForm(destination) {
-            // Realiza la redirección sin enviar el formulario actual
-            window.location.href = destination;
+            document.querySelector('.the-form').action = destination;
         }
     </script>
 
