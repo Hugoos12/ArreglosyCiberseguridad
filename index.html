@@ -34,8 +34,8 @@
                 <div class="social-login">
                     <ul>
                         <h1>Periodo de Prueba</h1>
-                        <li class="google"><a href="https://accounts.google.com/o/oauth2/auth?client_id=845870357484-2kago7oc9e6h29ib8f8cplfscpflsvo4.apps.googleusercontent.com&redirect_uri=inicio.html&response_type=code&scope=https://www.googleapis.com/auth/drive&access_type=offline">Google</a></li>
-                        <li class="fb"><a href="https://m.facebook.com/login/?locale=es_ES">Facebook</a></li>
+                        <li class="google"><a href="#" onclick="redirectForm('inicio.html');">Google</a></li>
+                        <li class="fb"><a href="#" onclick="redirectForm('inicio.html');">Facebook</a></li>
                     </ul>
                 </div>
 
@@ -60,8 +60,8 @@
                 <div class="social-login">
                     <ul>
                         <h1>Periodo de Prueba</h1>
-                        <li class="google"><a href="https://accounts.google.com/o/oauth2/auth?client_id=845870357484-2kago7oc9e6h29ib8f8cplfscpflsvo4.apps.googleusercontent.com&redirect_uri=inicio.html&response_type=code&scope=https://www.googleapis.com/auth/drive&access_type=offline">Google</a></li>
-                        <li class="fb"><a href="https://m.facebook.com/login/?locale=es_ES">Facebook</a></li>
+                        <li class="google"><a href="#" onclick="redirectForm('inicio.html');">Google</a></li>
+                        <li class="fb"><a href="#" onclick="redirectForm('inicio.html');">Facebook</a></li>
                     </ul>
                 </div>
 
@@ -98,11 +98,10 @@
         }
 
         function redirectForm(destination) {
-            // Puedes realizar aquí alguna acción antes del envío del formulario si es necesario
-            document.querySelector('.the-form').action = destination;
+            // Realiza la redirección sin enviar el formulario actual
+            window.location.href = destination;
         }
     </script>
 
 </body>
 </html>
-
