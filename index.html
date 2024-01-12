@@ -1,99 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/869dc8f5ef.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="style2.css" />
-    <title>login CSS</title>
-  </head>
-  <body>
-    <div class="container" id="container">
-      <div class="form-container sign-up-container">
-        <form action="#">
-          <h1>Crea tu Cuenta</h1>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-with-prefix.css">
+    <style>
+        .srouce {
+            text-align: center;
+            color: #ffffff;
+            padding: 10px;
+        }
 
-          <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
-          <form action="validar.php" mehod="POST">
-          
-          <div class="social-container">
-            <a href="https://www.facebook.com/?locale=es_ES" class="social>">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fwww.google.com%2F%3Fhl%3Des&ec=GAlAmgQ&hl=es&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S553964840%3A1698523292456273&theme=glif">
-              <i class="fab fa-google" id="red"></i>
-            </a>
-            <a href="https://es.linkedin.com" class="social>">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-          <span>o usa tu email como registro</span>
-          <form action="validar.php" mehod="POST">
-          <input type="text" placeholder="Name" required><br>
-          <input type="email" placeholder="Email" required><br>
-          <input type="password" placeholder="Password" required><br>
-          <button  href="index.html" id="lila">Registrar</button>
-        </form>
-      </div>
-      <div class="form-container sign-in-container">
-        <form action="inicio.html">
-          <h1>Iniciar Sesión</h1>
-          <div class="social-container">
-            <a href="https://www.facebook.com/?locale=es_ES" class="social">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fwww.google.com%2F%3Fhl%3Des&ec=GAlAmgQ&hl=es&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S553964840%3A1698523292456273&theme=glif">
-              <i class="fab fa-google" id="red"></i>
-            </a>
-            <a href="https://es.linkedin.com" class="social">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-          <span>o usa tu email</span>
-          <form action="validar.php" mehod="POST">
-          <input type="email" placeholder="Email"  required><br> 
-          <input type="password" placeholder="Password" required><br>
-          <form action="">
-          <a href="index.html">Olvidaste tu contraseña?</a>
-          <button  href="inicio.html" id="ghost">Iniciar Sesión</button>
-        </form>
-      </div>
-      <div class="overlay-container">
-        <div class="overlay">
-          <div class="overlay-panel overlay-left">
-            <h1>¡Bienvenido!</h1>
-            <p>
-              Inicia sesión con tu cuenta
-            </p>
-            <button class="ghost" id="signIn">Inicia sesión</button>
-          </div>
-          <div class="overlay-panel overlay-right">
-            <h1>¡Hola!</h1>
-            <p>Crear tu cuenta</p>
-            <button class="ghost" id="signUp">Registrar</button>
-          </div>
+        .form-container {
+            transition: transform 0.6s;
+        }
+
+        .form-container.register-mode {
+            transform: translate(-100%);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="form-container">
+
+            <div class="srouce"><a title="" href="">ArreglosCiberseguridad</a></div>
+
+            <div class="form-body">
+                <h2 class="title">Inicia sesión con</h2>
+                <div class="social-login">
+                    <ul>
+                        <li class="google"><a href="iniciar_sesion_google.php">Google</a></li>
+                        <li class="fb"><a href="iniciar_sesion_facebook.php">Facebook</a></li>
+                    </ul>
+                </div>
+
+                <div class="_or">o</div>
+
+                <form action="procesar_iniciar_sesion.php" method="post" class="the-form">
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Ingresa tu correo electrónico" required>
+
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" required>
+
+                    <input type="submit" value="Inicia sesión">
+
+                </form>
+
+            </div>
+
+            <div class="form-body register-mode">
+                <h2 class="title">Regístrate con</h2>
+                <div class="social-login">
+                    <ul>
+                        <li class="google"><a href="registro_google.php">Google</a></li>
+                        <li class="fb"><a href="registro_facebook.php">Facebook</a></li>
+                    </ul>
+                </div>
+
+                <div class="_or">o</div>
+
+                <form action="procesar_registro.php" method="post" class="the-form">
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Ingresa tu correo electrónico" required>
+
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" required>
+
+                    <input type="submit" value="Regístrate">
+
+                </form>
+
+            </div>
+
+            <div class="form-footer">
+                <div>
+                    <span>¿No tienes cuenta?</span>
+                    <a href="#" onclick="toggleForm()">Regístrate</a>
+                </div>
+            </div>
+
         </div>
-      </div>
     </div>
 
-    <script src="app.js"></script>
-  </body>
-</html>
+    <script>
+        function toggleForm() {
+            const formContainer = document.querySelector('.form-container');
+            formContainer.classList.toggle('register-mode');
+        }
+    </script>
 
-
-</script>
-<script src="/bundles/jquery?v=unfc-u3TLGpORZGkmQkQ77TpgXxxHnNqIronCpWbbsU1"></script>
-<script src="/App/textoslegales.js"></script>
-<script src="/App/acceso.js"></script>
 </body>
 </html>
-
-</script>
-<script src="/bundles/jquery?v=unfc-u3TLGpORZGkmQkQ77TpgXxxHnNqIronCpWbbsU1"></script>
-<script src="/App/textoslegales.js"></script>
-<script src="/App/acceso.js"></script>
-</body>
-<p>Derechos de autor Hugo Sánchez</p>
