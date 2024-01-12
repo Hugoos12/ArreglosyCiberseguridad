@@ -12,7 +12,7 @@ $correoRegistrado = /* Implementa tu lógica para verificar si el correo está r
 if ($correoRegistrado) {
     // El correo ya está registrado, mostrar un mensaje de error
     $_SESSION['registration_error'] = "Este correo ya está registrado.";
-    header("Location: index.php"); // Cambia 'index.php' por la página principal de inicio de sesión
+    header("Location: index.html"); 
     exit();
 }
 
