@@ -5,8 +5,9 @@ function iniciarSesion($email, $password) {
     // Conexion a la base de datos (reemplaza los valores con los de tu configuración)
     SELECT * FROM `usuarios`
     $servername = "http://localhost/phpmyadmin/";
-    $email = "tu_correo";
+    $email = "correos";
     $dbname = "registro";
+    $password = "contraseña";
 
     $conn = new mysqli($servername, $email, $password, $dbname);
 
