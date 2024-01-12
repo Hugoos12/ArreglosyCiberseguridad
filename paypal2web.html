@@ -1,14 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://kit.fontawesome.com/fc7f0c29a5.js" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pago con PayPal y Bizum</title>
   <link rel="stylesheet" href="style4.css">
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .payment-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+
+    .payment-method {
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .payment-method:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .paypal-button,
+    .bizum-button,
+    .delivery-button,
+    .home-button {
+      background-color: #4CAF50;
+      border: none;
+      padding: 15px 30px;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.3s;
+      outline: none;
+    }
+
+    .paypal-button:hover,
+    .bizum-button:hover,
+    .delivery-button:hover,
+    .home-button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
+
+    .secure-payment-method {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      margin: 20px;
+    }
+
+    .secure-icon {
+      font-size: 60px;
+      color: #fff;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .delivery-info {
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .delivery-info:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #333;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #666;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+      color: #333;
+      font-size: 16px;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+  </style>
 </head>
+
 <body>
   <div class="payment-container">
-    <div class="payment-method">
+    <div class="payment-method" id="paypal-method">
       <h1>Pago con PayPal</h1>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
@@ -19,24 +157,124 @@
       </form>
     </div>
 
-    <div class="payment-method">
+    <div class="payment-method" id="bizum-method">
       <h1>Pago con Bizum</h1>
       <form action="https://www.bizum.es/pay" method="post" target="_blank">
-        <input type="hidden" name="amount" value="CANTIDAD_A_PAGAR">
+        <input type="hidden" name="amount" value="75€">
         <input type="hidden" name="phone" value="TIPO_DE_TELÉFONO:MÓVIL">
         <button type="submit" class="bizum-button">Pagar con Bizum</button>
       </form>
+    </div>
+
+    <div class="payment-method" id="secure-payment-method">
+      <h1>Pago Seguro</h1>
+      <p>Aseguramos la confidencialidad de tus datos.</p>
+      <div class="secure-icon">
+        <i class="fas fa-credit-card"></i>
+      </div>
     </div>
   </div>
 
   <div class="delivery-info">
     <h2>Correo para la entrega del paquete</h2>
     <p>OBLIGATORIO PARA LA COMPRA</p>
-    <form action="https://formsubmit.co/05586dd72c783762531866c231131e47" method="POST">
-      <label for="email">Email:</label><br>
+    <form id="email-form">
+      <label for="email">Tu correo electrónico:</label><br>
       <input type="email" id="email" name="email" required><br><br>
-      <input type="submit" value="Enviar" class="delivery-button">
+
+      <label for="recipient-email">Correo para la entrega:</label><br>
+      <input type="email" id="recipient-email" name="recipient-email" required><br><br>
+
+      <input type="button" value="Realizar pedido" class="delivery-button" onclick="enviarCorreo()">
     </form>
   </div>
+
+  <li>
+    <a href="inicio.html" class="home-button">Inicio</a>
+  </li>
+
+  <script>
+    const cooldownActive = localStorage.getItem('cooldownActive') === 'true';
+
+    function toggleFormVisibility(show) {
+      const emailForm = document.getElementById('email-form');
+      const animationDuration = 1000;
+
+      if (show) {
+        emailForm.style.opacity = 0;
+        emailForm.style.display = 'block';
+
+        const fadeInInterval = setInterval(() => {
+          emailForm.style.opacity = parseFloat(emailForm.style.opacity) + 0.1;
+
+          if (parseFloat(emailForm.style.opacity) >= 1) {
+            clearInterval(fadeInInterval);
+          }
+        }, animationDuration / 10);
+      } else {
+        const fadeOutInterval = setInterval(() => {
+          emailForm.style.opacity = parseFloat(emailForm.style.opacity) - 0.1;
+
+          if (parseFloat(emailForm.style.opacity) <= 0) {
+            emailForm.style.display = 'none';
+            clearInterval(fadeOutInterval);
+          }
+        }, animationDuration / 10);
+      }
+    }
+
+    function enviarCorreo() {
+      if (cooldownActive) {
+        Swal.fire({
+          title: '¡Espera 10 minutos!',
+          text: 'Debes esperar antes de enviar otro correo.',
+          icon: 'warning',
+        });
+        return;
+      }
+
+      const email = document.getElementById('email').value;
+      const recipientEmail = document.getElementById('recipient-email').value;
+
+      if (email && recipientEmail) {
+        // Envía el correo utilizando EmailJS (reemplaza con tu template ID)
+        emailjs.send('<TU_SERVICE_ID>', '<TU_TEMPLATE_ID>', {
+          to_email: recipientEmail,
+          user_email: email
+        }).then(function (response) {
+          console.log('Correo enviado con éxito:', response);
+          
+
+          const securePaymentMethod = document.getElementById('secure-payment-method');
+          securePaymentMethod.innerHTML = `
+            <h1>Pago Seguro</h1>
+            <p>Aseguramos la confidencialidad de tus datos.</p>
+            <div class="secure-icon">
+              <i class="fas fa-credit-card"></i>
+            </div>
+            <p>¡Pago seguro en proceso!</p>
+          `;
+
+          toggleFormVisibility(false);
+
+          localStorage.setItem('cooldownActive', 'true');
+          setTimeout(() => {
+            localStorage.setItem('cooldownActive', 'false');
+            toggleFormVisibility(true);
+          }, 600000);
+        }, function (error) {
+          console.error('Error al enviar el correo:', error);
+         
+        });
+      } else {
+        Swal.fire({
+          title: 'Error',
+          text: 'Por favor, completa todos los campos antes de realizar el pedido.',
+          icon: 'error',
+        });
+      }
+    }
+  </script>
 </body>
+
 </html>
