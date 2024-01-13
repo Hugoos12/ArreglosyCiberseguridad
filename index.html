@@ -92,6 +92,35 @@
             </div>
         </div>
 
+
+        <script>
+            function validateForm() {
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+    
+                
+                var usernameRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    
+                
+                var passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    
+                if (!usernameRegex.test(username)) {
+                    alert("El usuario debe tener al menos 6 caracteres, una mayúscula y un número.");
+                    return false;
+                }
+    
+                if (!passwordRegex.test(password)) {
+                    alert("La contraseña debe tener al menos 6 caracteres, una mayúscula y un número.");
+                    return false;
+                }
+    
+                window.location.href = 'inicio.html';
+    
+                return true;
+            }
+
+        
+        </script>
         <script src="main.js"></script>
     </body>
 </html>
