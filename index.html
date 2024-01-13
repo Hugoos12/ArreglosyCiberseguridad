@@ -19,7 +19,7 @@
         <div class="form">
             <img src="authentication.svg" alt="" class="form__img">
 
-            <form action="inicio.html" class="form__content">
+            <form action="inicio.html" class="form__content" onsubmit="return validateForm('login')">
                 <h1 class="form__title">Iniciar sesión</h1>
 
                 <div class="form__div form__div-one">
@@ -45,7 +45,7 @@
                 </div>
                 <a href="#" class="form__forgot">Contraseña olvidada?</a>
 
-                <input type="submit" class="form__button" value="Iniciar sesion">
+                <input type="submit" class="form__button" value="Login">
 
                 <div class="form__social">
                     <span class="form__social-text">Iniciar sesión con</span>
@@ -55,7 +55,7 @@
                 </div>
             </form>
 
-            <form action="index.html" class="form__content form__register-mode">
+            <form action="index.html" class="form__content form__register-mode" onsubmit="return validateForm('register')">
                 <h1 class="form__title">Registro</h1>
 
                 <div class="form__div form__div-one">
@@ -93,9 +93,17 @@
     </div>
 
     <script>
-        function validateForm() {
-            var username = document.getElementById('register-username').value;
-            var password = document.getElementById('register-password').value;
+        function validateForm(formType) {
+            var username;
+            var password;
+
+            if (formType === 'login') {
+                username = document.getElementById('username').value;
+                password = document.getElementById('password').value;
+            } else if (formType === 'register') {
+                username = document.getElementById('register-username').value;
+                password = document.getElementById('register-password').value;
+            }
 
             var usernameRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
             var passwordRegex = /^(?=.*[A-Z\d\W_])[A-Za-z\d\W_]{7,}$/;
@@ -109,8 +117,6 @@
                 alert("La contraseña debe tener al menos 7 caracteres, una mayúscula, un número y un carácter especial.");
                 return false;
             }
-
-            window.location.href = 'index.html';
 
             return true;
         }
