@@ -1,22 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="styles.css">
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-        <title>ArreglosCiberseguridad</title>  
-    </head>
-    <body>
-        <div class="l-form">
-            <div class="shape1"></div>
-            <div class="shape2"></div>
+    <title>ArreglosCiberseguridad</title>  
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-            <div class="form">
-                
-                <img src="authentication.svg" alt="" class="form__img">
+        .l-form {
+            position: relative;
+        }
+
+        .form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+        }
+
+        .form__content {
+            width: 100%;
+        }
+
+        .form__button {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="l-form">
+        <div class="shape1"></div>
+        <div class="shape2"></div>
+
+        <div class="form">
+            <img src="authentication.svg" alt="" class="form__img">
 
                 <form action="inicio.html" class="form__content">
                     <h1 class="form__title">Iniciar sesion</h1>
@@ -94,31 +125,24 @@
 
 
         <script>
-            function validateForm() {
-                var username = document.getElementById('username').value;
-                var password = document.getElementById('password').value;
-    
-                
-                var usernameRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
-    
-                
-                var passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
-    
-                if (!usernameRegex.test(username)) {
-                    alert("El usuario debe tener al menos 6 caracteres, una mayúscula y un número.");
-                    return false;
-                }
-    
-                if (!passwordRegex.test(password)) {
-                    alert("La contraseña debe tener al menos 6 caracteres, una mayúscula y un número.");
-                    return false;
-                }
-    
-                window.location.href = 'inicio.html';
-    
-                return true;
+           
+            function validateForm(formType) {
+            var username = document.getElementById(`${formType}-username`).value;
+            var password = document.getElementById(`${formType}-password`).value;
+
+            var usernameRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+            var passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+            if (!usernameRegex.test(username) || !passwordRegex.test(password)) {
+                alert("El usuario y la contraseña deben tener al menos 6 caracteres, una mayúscula y un número.");
+                return false;
             }
 
+            // Aquí deberías agregar la lógica para enviar los datos a la base de datos
+            // y manejar el registro o inicio de sesión según sea necesario.
+
+            return true;
+        }
         
         </script>
         <script src="main.js"></script>
