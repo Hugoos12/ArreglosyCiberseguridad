@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -13,27 +13,6 @@
         .form__register-mode {
             display: none;
         }
-
-        .form__toggle-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .form__toggle-btn {
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .form__toggle-btn:hover {
-            background-color: white;
-            color: black;
-        }
     </style>
 
     <title>ArreglosCiberseguridad</title>  
@@ -41,7 +20,7 @@
 <body>
     <div class="l-form">
         <div class="shape1"></div>
-        div class="shape2"></div>
+        <div class="shape2"></div>
 
         <div class="form">
             <img src="authentication.svg" alt="" class="form__img">
@@ -81,10 +60,7 @@
                     <a href="#" class="form__social-icon"><i class='bx bxl-instagram' ></i></a>
                 </div>
                 
-                <div class="form__toggle-container">
-                    <a href="#" class="form__forgot">Contraseña olvidada?</a>
-                    <button class="form__toggle-btn" onclick="toggleForms()">Dar la vuelta</button>
-                </div>
+                <a href="#" class="form__toggle" onclick="toggleForms()">Registro</a>
             </form>
 
             <form action="index.html" class="form__content form__register-mode" onsubmit="return validateForm('register');">
@@ -121,10 +97,7 @@
                     <a href="#" class="form__social-icon"><i class='bx bxl-instagram' ></i></a>
                 </div>
                 
-                <div class="form__toggle-container">
-                    <a href="#" class="form__forgot">Contraseña olvidada?</a>
-                    <button class="form__toggle-btn" onclick="toggleForms()">Dar la vuelta</button>
-                </div>
+                <a href="#" class="form__toggle" onclick="toggleForms()">Iniciar sesión</a>
             </form>
         </div>
     </div>
@@ -164,7 +137,7 @@
                 return false;
             }
 
-            
+            // Verificación adicional para evitar correos como usuario o contraseña
             if (emailRegex.test(username) || emailRegex.test(password)) {
                 alert("No se permiten direcciones de correo como usuario o contraseña.");
                 return false;
