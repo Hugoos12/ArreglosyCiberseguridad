@@ -9,6 +9,12 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="logo2.png">
 
+    <style>
+        .form__register-mode {
+            display: none;
+        }
+    </style>
+
     <title>ArreglosCiberseguridad</title>  
 </head>
 <body>
@@ -19,7 +25,7 @@
         <div class="form">
             <img src="authentication.svg" alt="" class="form__img">
 
-            <form action="inicio.html" class="form__content" onsubmit="return validateForm('login')">
+            <form action="inicio.html" class="form__content" onsubmit="return validateForm('login');">
                 <h1 class="form__title">Iniciar sesión</h1>
 
                 <div class="form__div form__div-one">
@@ -53,9 +59,11 @@
                     <a href="#" class="form__social-icon"><i class='bx bxl-google' ></i></a>
                     <a href="#" class="form__social-icon"><i class='bx bxl-instagram' ></i></a>
                 </div>
+                
+                <a href="#" class="form__toggle" onclick="toggleForms()">Registro</a>
             </form>
 
-            <form action="index.html" class="form__content form__register-mode" onsubmit="return validateForm('register')">
+            <form action="index.html" class="form__content form__register-mode" onsubmit="return validateForm('register');">
                 <h1 class="form__title">Registro</h1>
 
                 <div class="form__div form__div-one">
@@ -88,11 +96,21 @@
                     <a href="#" class="form__social-icon"><i class='bx bxl-google' ></i></a>
                     <a href="#" class="form__social-icon"><i class='bx bxl-instagram' ></i></a>
                 </div>
+                
+                <a href="#" class="form__toggle" onclick="toggleForms()">Iniciar sesión</a>
             </form>
         </div>
     </div>
 
     <script>
+        function toggleForms() {
+            var loginForm = document.querySelector('.form__content:not(.form__register-mode)');
+            var registerForm = document.querySelector('.form__register-mode');
+
+            loginForm.classList.toggle('form__register-mode');
+            registerForm.classList.toggle('form__register-mode');
+        }
+
         function validateForm(formType) {
             var username;
             var password;
@@ -107,6 +125,7 @@
 
             var usernameRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
             var passwordRegex = /^(?=.*[A-Z\d\W_])[A-Za-z\d\W_]{7,}$/;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             if (!usernameRegex.test(username)) {
                 alert("El usuario debe tener al menos 6 caracteres, una mayúscula y un número.");
@@ -115,6 +134,12 @@
 
             if (!passwordRegex.test(password)) {
                 alert("La contraseña debe tener al menos 7 caracteres, una mayúscula, un número y un carácter especial.");
+                return false;
+            }
+
+            // Verificación adicional para evitar correos como usuario o contraseña
+            if (emailRegex.test(username) || emailRegex.test(password)) {
+                alert("No se permiten direcciones de correo como usuario o contraseña.");
                 return false;
             }
 
