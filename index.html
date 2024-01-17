@@ -75,7 +75,6 @@
             </form>
 
             <form action="index.html" class="form__content form__register-mode" onsubmit="return validateForm('register');">
-                
                 <h1 class="form__title">Registro</h1>
 
                 <div class="form__div form__div-one">
@@ -159,7 +158,7 @@
                 return false;
             }
 
-            
+            // Verificación adicional para evitar correos como usuario o contraseña
             if (emailRegex.test(username) || emailRegex.test(password)) {
                 alert("No se permiten direcciones de correo como usuario o contraseña.");
                 return false;
