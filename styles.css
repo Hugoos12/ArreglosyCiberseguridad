@@ -172,7 +172,6 @@ footer {
   background-color: #4d94ff;
 }
 
-
 .form__button {
     background-color: #000; 
     color: #fff;
@@ -249,4 +248,39 @@ footer {
 
 .form__toggle:hover {
     background-color: #2980b9;
+}
+
+.form__div-one {
+  position: relative;
+}
+
+.form__icon-user,
+.form__icon-password {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  color: #555;
+}
+
+.form__icon-password {
+  cursor: pointer;
+}
+
+.form__div-input {
+  position: relative;
+}
+
+.form__label,
+.form__input {
+  padding-left: 40px;
+}
+
+.form__input {
+  flex: 1;
+}
+
+.form__icon-user i,
+.form__icon-password i {
+  font-size: 20px;
 }
