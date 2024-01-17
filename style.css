@@ -207,7 +207,7 @@ footer {
   color: #fff;
 }
 
-/* Agrega estos estilos al final del archivo styles.css */
+
 
 .form__button {
     background-color: #4CAF50; 
@@ -250,7 +250,7 @@ footer {
     border-radius: 5px;
 }
 
-/* Animación para el cambio de modo */
+
 @keyframes flip {
     from {
         transform: rotateY(0deg);
@@ -262,4 +262,13 @@ footer {
 
 .form__content {
     animation: flip 0.6s ease;
+}
+
+.form__button-register {
+    background-color: #3498db;
+    color: white;
+}
+
+.form__button-register:hover {
+    background-color: #2980b9;
 }
