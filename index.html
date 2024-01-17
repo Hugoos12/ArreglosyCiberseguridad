@@ -29,7 +29,7 @@
                 <h1 class="form__title">Iniciar sesión</h1>
 
                 <div class="form__div form__div-one">
-                    <div class="form__icon form__icon-user">
+                    <div class="form__icon">
                         <i class='bx bx-user-circle'></i>
                     </div>
 
@@ -47,15 +47,14 @@
                     <input type="email" id="email" class="form__input form__input-email" required>
                 </div>
 
-                <div class="form__div form__div-one form__div-input">
-                    <div class="form__icon form__icon-password">
+                <div class="form__div">
+                    <div class="form__icon">
                         <i class='bx bx-lock'></i>
                     </div>
 
                     <div class="form__div-input">
                         <label for="password" class="form__label">Contraseña</label>
                         <input type="password" id="password" class="form__input" required>
-                        <i class='bx bx-hide form__icon-password' onclick="togglePassword('password')'></i>
                     </div>
                 </div>
                 <a href="#" class="form__forgot">Contraseña olvidada?</a>
@@ -79,7 +78,7 @@
                 <h1 class="form__title">Registro</h1>
 
                 <div class="form__div form__div-one">
-                    <div class="form__icon form__icon-user">
+                    <div class="form__icon">
                         <i class='bx bx-user-circle'></i>
                     </div>
 
@@ -97,15 +96,14 @@
                     <input type="email" id="register-email" class="form__input form__input-email" required>
                 </div>
 
-                <div class="form__div form__div-one form__div-input">
-                    <div class="form__icon form__icon-password">
+                <div class="form__div">
+                    <div class="form__icon">
                         <i class='bx bx-lock'></i>
                     </div>
 
                     <div class="form__div-input">
                         <label for="register-password" class="form__label">Contraseña</label>
                         <input type="password" id="register-password" class="form__input" required>
-                        <i class='bx bx-hide form__icon-password' onclick="togglePassword('register-password')"></i>
                     </div>
                 </div>
 
@@ -167,21 +165,6 @@
             }
 
             return true;
-        }
-
-        function togglePassword(inputId) {
-            var passwordInput = document.getElementById(inputId);
-            var icon = document.querySelector('.' + inputId + ' ~ .form__icon-password i');
-
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.classList.remove('bx-hide');
-                icon.classList.add('bx-show');
-            } else {
-                passwordInput.type = "password";
-                icon.classList.remove('bx-show');
-                icon.classList.add('bx-hide');
-            }
         }
     </script>
     <script src="main.js"></script>
