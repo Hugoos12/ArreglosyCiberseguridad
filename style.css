@@ -206,3 +206,60 @@ footer {
 .product:hover .product-title {
   color: #fff;
 }
+
+/* Agrega estos estilos al final del archivo styles.css */
+
+.form__button {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.form__button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+
+.form__div-email {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form__label-email {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form__input-email {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Animación para el cambio de modo */
+@keyframes flip {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+.form__content {
+    animation: flip 0.6s ease;
+}
