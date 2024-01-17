@@ -274,3 +274,18 @@ footer {
 .form__button-register:hover {
     background-color: #2980b9;
 }
+
+.form__toggle {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form__toggle:hover {
+    background-color: #2980b9;
+}
