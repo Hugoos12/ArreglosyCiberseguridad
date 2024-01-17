@@ -231,19 +231,21 @@ footer {
 }
 
 
-.form__div-email {
+
+.form__div-input-email {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
 }
 
 .form__label-email {
-    font-size: 14px;
+    font-size: 16px;
     color: #555;
-    margin-bottom: 5px;
+    margin-right: 10px;
 }
 
 .form__input-email {
+    flex: 1;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
