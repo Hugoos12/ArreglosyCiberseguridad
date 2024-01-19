@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-   <link rel="shortcut icon" type="image/x-icon" href="logo2.png">
+  <link rel="shortcut icon" type="image/x-icon" href="logo2.png">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://kit.fontawesome.com/fc7f0c29a5.js" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
@@ -34,6 +34,7 @@
       padding: 20px;
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      width: 100%; /* Ocupa todo el ancho disponible */
     }
 
     .payment-method:hover {
@@ -78,6 +79,7 @@
       border-radius: 10px;
       text-align: center;
       margin: 20px;
+      width: 100%; /* Ocupa todo el ancho disponible */
     }
 
     .secure-icon {
@@ -109,6 +111,7 @@
       padding: 20px;
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      width: 100%; /* Ocupa todo el ancho disponible */
     }
 
     .delivery-info:hover {
@@ -189,9 +192,7 @@
     </form>
   </div>
 
-  <li>
-    <a href="inicio.html" class="home-button">Inicio</a>
-  </li>
+  <a href="inicio.html" class="home-button">Inicio</a>
 
   <script>
     const cooldownActive = localStorage.getItem('cooldownActive') === 'true';
