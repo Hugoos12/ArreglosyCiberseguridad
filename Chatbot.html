@@ -23,7 +23,7 @@
       <div id="chatBody"></div>
       <div id="chatInput" class="d-flex">
         <textarea id="userInput" class="flex-grow-1 mr-2 p-2" placeholder="Escribe tu pregunta o frase"></textarea>
-        <button id="sendButton" class="btn btn-outline-secondary">➔</button>
+        <button id="sendButton" class="btn btn-outline-secondary" onclick="sendMessage()">➔</button>
       </div>
     </div>
     <div class="menu">
@@ -60,9 +60,11 @@
       // Lógica para enviar calificación
     });
 
-    document.getElementById('sendButton').addEventListener('click', function () {
-      document.getElementById('botResponses').innerHTML = '';
-    });
+    function sendMessage() {
+      const userInput = document.getElementById('userInput').value.trim();
+      showBotResponse(userInput); // Cambia esto con la lógica real del bot
+      document.getElementById('userInput').value = ''; // Limpiar el cuadro de texto después de enviar
+    }
 
     function showBotResponse(response) {
       const botResponses = document.getElementById('botResponses');
@@ -77,4 +79,3 @@
 </body>
 
 </html>
-
