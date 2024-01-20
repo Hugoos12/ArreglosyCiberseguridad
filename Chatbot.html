@@ -62,8 +62,8 @@
 
     function sendMessage() {
       const userInput = document.getElementById('userInput').value.trim();
-      showBotResponse(userInput); // Cambia esto con la lógica real del bot
-      document.getElementById('userInput').value = ''; // Limpiar el cuadro de texto después de enviar
+      showBotResponse(userInput); 
+      document.getElementById('userInput').value = ''; 
     }
 
     function showBotResponse(response) {
@@ -74,6 +74,17 @@
         responseDiv.textContent = response;
         botResponses.appendChild(responseDiv);
       }
+
+      // Lógica para la respuesta del bot aquí
+      const botResponse = "Respuesta del bot aquí"; // Cambia esto con la lógica real del bot
+      const botResponseDiv = document.createElement('div');
+      botResponseDiv.textContent = botResponse;
+      botResponses.appendChild(botResponseDiv);
+    }
+
+    function selectQuestion(question) {
+      // Lógica para seleccionar la pregunta
+      document.getElementById('userInput').value = question;
     }
   </script>
 </body>
