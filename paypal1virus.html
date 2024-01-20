@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <link rel="shortcut icon" type="image/x-icon" href="logo2.png">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://kit.fontawesome.com/fc7f0c29a5.js" crossorigin="anonymous"></script>
@@ -10,6 +11,19 @@
   <title>Pago con PayPal y Bizum</title>
   <link rel="stylesheet" href="style4.css">
   <style>
+
+@media only screen and (max-width: 600px) {
+  .delivery-info {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  input[type="email"] {
+    width: calc(100% - 30px);
+  }
+}
+
+    
     body {
       background-color: #f7f7f7;
       font-family: 'Arial', sans-serif;
@@ -195,6 +209,10 @@
   <a href="inicio.html" class="home-button">Inicio</a>
 
   <script>
+    function validarFormatoCorreo(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
     const cooldownActive = localStorage.getItem('cooldownActive') === 'true';
 
     function toggleFormVisibility(show) {
@@ -225,15 +243,13 @@
     }
 
     function enviarCorreo() {
-      if (cooldownActive) {
-        Swal.fire({
-          title: '¡Espera 10 minutos!',
-          text: 'Debes esperar antes de enviar otro correo.',
-          icon: 'warning',
-        });
-        return;
-      }
+  const email = document.getElementById('email').value;
+  const recipientEmail = document.getElementById('recipient-email').value;
 
+  if (!validarFormatoCorreo(email) || !validarFormatoCorreo(recipientEmail)) {
+    mostrarMensajeError('Por favor, introduce correos electrónicos válidos.');
+    return;
+  }
       const email = document.getElementById('email').value;
       const recipientEmail = document.getElementById('recipient-email').value;
 
