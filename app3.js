@@ -11,11 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const usageCountdownContainer = document.getElementById('usageCountdown');
 
   let questionsAsked = 0;
-  let remainingUses = 10;
   let dailyResetInterval;
   let countdownInterval;
-  const MAX_QUESTIONS_PER_DAY = 10;
-  const RESET_TIME = 24 * 60 * 60 * 1000;
+  
 
   const VALID_QUESTIONS = [
     'Problemas con el pago',
