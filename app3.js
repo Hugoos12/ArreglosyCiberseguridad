@@ -3,17 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const userInput = document.getElementById('userInput');
   const sendButton = document.getElementById('sendButton');
   const btnInicio = document.getElementById('btnInicio');
-  const usageMessage = document.getElementById('usageMessage');
-  const remainingUsesElement = document.getElementById('remainingUses');
-  const lockMessage = document.getElementById('lockMessage');
-  const timerContainer = document.getElementById('countdownTimer');
-  const usageCountContainer = document.getElementById('usageCountNumber');
-  const usageCountdownContainer = document.getElementById('usageCountdown');
-
-  let questionsAsked = 0;
-  let dailyResetInterval;
-  let countdownInterval;
-  
 
   const VALID_QUESTIONS = [
     'Problemas con el pago',
@@ -35,136 +24,26 @@ document.addEventListener('DOMContentLoaded', function () {
     'Problemas con el servicio': 'Lo sentimos mucho por cualquier inconveniente con el servicio. Por favor, ponte en contacto con nuestro equipo a través de la pestaña de contacto, y ellos te responderán al correo que hayas seleccionado.'
   };
 
-  let remainingTime = parseInt(localStorage.getItem('remainingTime'), 10);
-  if (isNaN(remainingTime)) {
-    remainingTime = RESET_TIME;
-  }
-
-  if (remainingTime > 0) {
-    showCountdownTimer();
-  } else {
-    showLockAnimation();
-  }
-  remainingUsesElement.textContent = remainingUses;
-
-  window.addEventListener('beforeunload', function () {
-    localStorage.setItem('remainingTime', remainingTime);
-  });
-
   btnInicio.addEventListener('click', function () {
     window.location.href = 'inicio.html';
   });
 
   sendButton.addEventListener('click', function () {
     const userQuestion = userInput.value.trim();
-    if (userQuestion !== '' && remainingTime > 0) {
+    if (userQuestion !== '') {
       userInput.value = '';
       askQuestion(userQuestion);
-    } else if (remainingTime <= 0) {
-      showLockAnimation();
     }
   });
 
   function askQuestion(question) {
-    if (questionsAsked < MAX_QUESTIONS_PER_DAY && remainingUses > 0) {
-      displayMessage('user', question);
+    displayMessage('user', question);
 
-      if (VALID_QUESTIONS.includes(question)) {
-        const response = QUESTION_RESPONSES[question] || 'Lo sentimos, pero no hay respuesta para esta pregunta.';
-        displayMessage('bot', response);
-      } else {
-        displayMessage('bot', 'Lo sentimos, pero la pregunta no es válida. Intenta enviar una pregunta válida.');
-      }
-
-      questionsAsked++;
-      remainingUses--;
-
-      remainingUsesElement.textContent = remainingUses;
-      updateUsageCountColor();
-
-      if (remainingUses === 0) {
-        showLockAnimation();
-      }
+    if (VALID_QUESTIONS.includes(question)) {
+      const response = QUESTION_RESPONSES[question] || 'Lo sentimos, pero no hay respuesta para esta pregunta.';
+      displayMessage('bot', response);
     } else {
-      showLockAnimation();
-    }
-  }
-
-  function showLockAnimation() {
-    lockMessage.classList.add('active');
-    chatBody.classList.add('inactive');
-    userInput.disabled = true;
-    sendButton.disabled = true;
-
-    setTimeout(function () {
-      lockMessage.classList.remove('active');
-      chatBody.classList.remove('inactive');
-      userInput.disabled = false;
-      sendButton.disabled = false;
-      resetChat();
-    }, remainingTime > 0 ? remainingTime : 1000);
-  }
-
-  function showCountdownTimer() {
-    if (!countdownInterval) {
-      startCountdownTimer();
-    }
-  }
-
-  function startCountdownTimer() {
-    countdownInterval = setInterval(function () {
-      remainingTime -= 1000;
-
-      const hours = Math.floor(remainingTime / (60 * 60 * 1000));
-      const minutes = Math.floor((remainingTime % (60 * 60 * 1000)) / (60 * 1000));
-      const seconds = Math.floor((remainingTime % (60 * 1000)) / 1000);
-
-      timerContainer.textContent = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
-      usageCountdownContainer.textContent = `Tiempo restante: ${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
-
-      localStorage.setItem('remainingTime', remainingTime);
-
-      if (remainingTime <= 0) {
-        clearInterval(countdownInterval);
-        resetChat();
-      }
-    }, 1000);
-  }
-
-  function formatTime(value) {
-    return value < 10 ? `0${value}` : value;
-  }
-
-  function resetChat() {
-    clearInterval(countdownInterval);
-    countdownInterval = null;
-
-    chatBody.innerHTML = '';
-    questionsAsked = 0;
-    remainingUses = 10;
-    remainingUsesElement.textContent = remainingUses;
-    usageMessage.textContent = `Quedan ${remainingUses} usos diarios.`;
-    usageCountContainer.textContent = remainingUses;
-    usageCountContainer.classList.remove('red');
-    usageCountContainer.classList.add('green');
-
-    remainingTime = RESET_TIME;
-    localStorage.setItem('remainingTime', remainingTime);
-
-    clearInterval(dailyResetInterval);
-    dailyResetInterval = setInterval(function () {
-      remainingUses = 10;
-      remainingUsesElement.textContent = remainingUses;
-      usageCountContainer.textContent = remainingUses;
-      usageCountContainer.classList.remove('red');
-      usageCountContainer.classList.add('green');
-    }, RESET_TIME);
-  }
-
-  function updateUsageCountColor() {
-    if (remainingUses <= 5) {
-      usageCountContainer.classList.remove('green');
-      usageCountContainer.classList.add('red');
+      displayMessage('bot', 'Lo sentimos, pero la pregunta no es válida. Intenta enviar una pregunta válida.');
     }
   }
 
@@ -229,13 +108,7 @@ function fillStars(count) {
 function handleSendRating() {
   if (selectedRating > 0) {
     alert(`¡Gracias por calificar con ${selectedRating} estrella(s)!`);
-
-    // Puedes agregar aquí la lógica para enviar la calificación a tu página de rankings.
-   // window.location.href = '';
   } else {
     alert('Por favor, selecciona una calificación antes de enviar.');
   }
 }
-
-
-
