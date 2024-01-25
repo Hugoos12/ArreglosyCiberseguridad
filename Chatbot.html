@@ -9,23 +9,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <link rel="stylesheet" type="text/css" href="style1.css">
   <title>Bot Ciberseguridad</title>
-   <link rel="shortcut icon" type="image/x-icon" href="logo2.png">
+  <link rel="shortcut icon" type="image/x-icon" href="logo2.png">
 </head>
 
 <body>
   <div class="container text-center mt-5">
     <header class="bg-dark text-white p-3">
-      <h1>Bot Ciberseguridad</h1>
+      <h1 class="animate__animated animate__bounceIn">Bot Ciberseguridad</h1>
       <button id="btnInicio" class="btn btn-light">Inicio</button>
     </header>
     <div id="chatContainer" class="mt-4 bg-white text-dark p-3 rounded">
-      <div id="botResponses"></div>
+      <div id="botResponses" class="animate__animated animate__fadeIn"></div>
       <div id="chatBody"></div>
       <div id="chatInput" class="d-flex">
         <textarea id="userInput" class="flex-grow-1 mr-2 p-2" placeholder="Escribe tu pregunta o frase"></textarea>
-        <button id="sendButton" class="btn btn-outline-secondary">➔</button>
+        <button id="sendButton" class="btn btn-outline-secondary animate__animated animate__fadeInRight">➔</button>
       </div>
-      <div id="usageMessage" class="mt-2 text-muted">Quedan <span id="remainingUses">10</span> usos diarios.</div>
+
     </div>
     <div class="menu">
       <button class="btn btn-secondary" onclick="selectQuestion('Problemas con el pago')">Problemas con el pago</button>
@@ -39,7 +39,7 @@
   </div>
 
   <div id="ratingsContainer" class="mt-4">
-    <h3>Califica nuestro servicio:</h3>
+    <h3 class="animate__animated animate__fadeIn">Califica nuestro servicio:</h3>
     <div class="rating-stars" id="ratingStars">
       <span class="star" data-star="1"></span>
       <span class="star" data-star="2"></span>
@@ -47,13 +47,7 @@
       <span class="star" data-star="4"></span>
       <span class="star" data-star="5"></span>
     </div>
-    <button id="sendRatingButton" class="btn btn-primary mt-2">Enviar Calificación</button>
-  </div>
-
-  <div id="lockMessage">
-    <p id="lockText">Tus usos diarios han terminado. Vuelve en 24 horas.</p>
-    <div id="usageCountdown" class="mt-2 text-muted">Tiempo restante: <span id="countdownTimer"></span></div>
-    <div id="usageCount" class="mt-2 text-muted">Usos disponibles: <span id="usageCountNumber">10</span></div>
+    <button id="sendRatingButton" class="btn btn-primary mt-2 animate__animated animate__fadeInUp">Enviar Calificación</button>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -63,86 +57,19 @@
   <script src="app3.js"></script>
 
   <script>
-    const countdownTimer = document.getElementById('countdownTimer');
-    const usageCountNumber = document.getElementById('usageCountNumber');
-    const lockMessage = document.getElementById('lockMessage');
-    const lockText = document.getElementById('lockText');
-
-    let remainingTime = parseInt(localStorage.getItem('remainingTime')) || 0;
-    let usageCount = parseInt(localStorage.getItem('usageCount')) || 10;
-
-    function updateCountdown() {
-      const minutes = Math.floor(remainingTime / 60);
-      const seconds = remainingTime % 60;
-      countdownTimer.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    }
-
-    function updateUsageCount() {
-      usageCountNumber.textContent = usageCount;
-    }
-
-    function startCountdown() {
-      const countdownInterval = setInterval(() => {
-        if (remainingTime <= 0) {
-          clearInterval(countdownInterval);
-          lockMessage.style.display = 'none';
-          usageCount = 10; 
-        } else {
-          remainingTime--;
-          updateCountdown();
-          localStorage.setItem('remainingTime', remainingTime.toString());
-        }
-      }, 1000);
-    }
-
-    function resetCountdown() {
-      remainingTime = 86400; 
-      updateCountdown();
-      startCountdown();
-      localStorage.setItem('remainingTime', remainingTime.toString());
-    }
-
-    function reduceUsageCount() {
-      if (usageCount > 0) {
-        usageCount--;
-        updateUsageCount();
-        localStorage.setItem('usageCount', usageCount.toString());
-      }
-    }
-
-    
-    updateCountdown();
-    updateUsageCount();
-
-    if (remainingTime <= 0) {
-      lockMessage.style.display = 'block';
-      lockText.textContent = 'Tus usos diarios han terminado. Vuelve en 24 horas.';
-    } else {
-      startCountdown();
-    }
-
-    // Lógica para vincular servicio de estrellas con página de rankings
-    document.getElementById('sendRatingButton').addEventListener('click', function () {
-      // Aquí puedes redirigir a la página de rankings o agregar la lógica que desees.
-    });
-
-    
     document.getElementById('sendButton').addEventListener('click', function () {
-      document.getElementById('botResponses').innerHTML = ''; 
-      
+      document.getElementById('botResponses').innerHTML = '';
     });
 
-    
     function showBotResponse(response) {
       const botResponses = document.getElementById('botResponses');
-      
+
       if (!botResponses.innerHTML.includes(response)) {
         const responseDiv = document.createElement('div');
         responseDiv.textContent = response;
         botResponses.appendChild(responseDiv);
       }
     }
-
   </script>
 </body>
 
