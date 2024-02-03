@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arreglos y Ciberseguridad</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-<style>
+  <style>
     body {
       background-color: #f2f2f2;
       font-family: 'Arial', sans-serif;
@@ -15,16 +15,15 @@
       padding: 0;
     }
 
-   header {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-  margin-right: 100; 
-  width: 100%; 
-  box-sizing: border-box; 
-}
-
+    header {
+      position: relative;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
     header #logo {
       width: 100px;
@@ -41,11 +40,15 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-top: 20px;
     }
 
     nav ul li {
-      display: inline;
-      margin-right: 20px;
+      display: block;
+      margin-bottom: 10px;
     }
 
     nav a {
@@ -150,6 +153,24 @@
       color: #66a3ff;
       font-weight: bold;
     }
+
+    
+    @media (max-width: 768px) {
+      header {
+        text-align: center;
+      }
+
+      nav ul {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      nav ul li {
+        margin: 0 10px;
+      }
+    }
   </style>
 </head>
 
@@ -248,4 +269,3 @@
 </body>
 
 </html>
-
