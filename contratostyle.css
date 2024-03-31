@@ -1,0 +1,155 @@
+@keyframes entrada {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes rotacion {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes desplazamiento {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes escalado {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes opacidad {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes zoom {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes firma {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes boli-mover {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
+  }
+  
+  @keyframes botones {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20%);
+    }
+  }
+  
+  @keyframes mensaje {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .container {
+    position: relative;
+  }
+  
+  .contrato-oculto {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  
+  #papel {
+    background-color: #f9f9f9;
+    border: 2px solid #000;
+    padding: 40px;
+    width: 300px;
+    animation: entrada 1s forwards;
+    font-family: "Helvetica Neue", sans-serif; 
+  }
+  
+  .boton {
+    font-family: "Helvetica Neue", sans-serif; 
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .boton-verde {
+    background-color: #4caf50;
+    border: none;
+  }
+  
+  
+  
+  #firma {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #boli {
+    width: 30px;
+    margin-right: 10px;
+  }
+  
+  #firma-espacio {
+    width: 100px;
+    height: 40px;
+    border: 1px dashed #000;
+    margin-top: 20px;
+    opacity: 0;
+  }
+  
+  .animacion-botones {
+    animation: botones 0.5s forwards;
+  }
+  
+  .animacion-mensaje {
+    animation: mensaje 1s forwards;
+  }
+  
