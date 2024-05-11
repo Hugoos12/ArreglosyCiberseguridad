@@ -163,7 +163,7 @@ input {
 }
 
 #ticket {
-  animation: slideInRight 1s forwards;
+  animation: slideInRight 2s forwards;
 }
 
 @keyframes fadeIn {
